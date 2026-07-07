@@ -71,12 +71,12 @@ export function MediBotApp() {
   }
 
   return (
-    <main className="relative flex-1 overflow-hidden">
-      <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-6 sm:px-6 lg:px-8">
+    <main className="relative flex-1 overflow-x-clip">
+      <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-3 py-4 sm:px-6 sm:py-6 lg:px-8">
         <div className="grid flex-1 gap-6 xl:grid-cols-[1.05fr_1.2fr]">
-          <section className="flex flex-col justify-between rounded-[2rem] border border-white/10 bg-[linear-gradient(145deg,rgba(33,64,86,0.96),rgba(13,27,42,0.94))] p-6 text-white shadow-2xl shadow-cyan-950/20 sm:p-8">
+          <section className="min-w-0 flex flex-col justify-between rounded-[2rem] border border-white/10 bg-[linear-gradient(145deg,rgba(33,64,86,0.96),rgba(13,27,42,0.94))] p-5 text-white shadow-2xl shadow-cyan-950/20 sm:p-8">
             <div className="space-y-8">
-              <div className="flex flex-wrap items-center gap-3 text-sm">
+              <div className="flex flex-wrap items-center gap-2 text-xs sm:gap-3 sm:text-sm">
                 <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 font-medium text-cyan-100">
                   ND Project Presentation
                 </span>
@@ -86,20 +86,20 @@ export function MediBotApp() {
               </div>
 
               <div className="space-y-4">
-                <div className="flex items-center gap-3 text-cyan-100">
+                <div className="flex min-w-0 items-center gap-3 text-cyan-100">
                   <div className="rounded-2xl bg-white/10 p-3">
                     <Stethoscope className="size-6" />
                   </div>
-                  <p className="font-medium tracking-[0.24em] uppercase text-cyan-100/75">
+                  <p className="min-w-0 text-sm font-medium tracking-[0.2em] uppercase text-cyan-100/75 sm:tracking-[0.24em]">
                     MediBot
                   </p>
                 </div>
 
-                <h1 className="max-w-2xl font-[family-name:var(--font-heading)] text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                <h1 className="max-w-2xl text-balance font-[family-name:var(--font-heading)] text-3xl font-semibold tracking-tight text-white sm:text-5xl">
                   Development of a medical chatbot for rural healthcare.
                 </h1>
 
-                <p className="max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
+                <p className="max-w-2xl text-sm leading-7 text-slate-200 sm:text-lg sm:leading-8">
                   A presentation-ready chatbot prototype that supports symptom
                   education, prevention advice, and early referral guidance for
                   underserved communities.
@@ -145,29 +145,29 @@ export function MediBotApp() {
             </div>
           </section>
 
-          <section className="flex min-h-[720px] flex-col rounded-[2rem] border border-white/10 bg-black/35 shadow-2xl shadow-black/20 backdrop-blur-xl">
-            <div className="border-b border-white/10 px-5 py-4 sm:px-6">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div>
+          <section className="min-w-0 flex min-h-[640px] flex-col rounded-[2rem] border border-white/10 bg-black/35 shadow-2xl shadow-black/20 backdrop-blur-xl sm:min-h-[720px]">
+            <div className="border-b border-white/10 px-4 py-4 sm:px-6">
+              <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
                   <p className="font-medium text-white">Chat with MediBot</p>
                   <p className="text-sm text-slate-300">
                     Ask about symptoms, prevention, first aid, maternal health,
                     or when to visit a clinic.
                   </p>
                 </div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-200">
+                <div className="inline-flex max-w-full items-center gap-2 self-start rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-200">
                   <MessageSquareHeart className="size-4" />
                   Safety-guided responses
                 </div>
               </div>
             </div>
 
-            <div className="border-b border-white/10 px-5 py-4 sm:px-6">
+            <div className="border-b border-white/10 px-4 py-4 sm:px-6">
               <div className="flex flex-wrap gap-2">
                 {demoPrompts.map((prompt) => (
                   <Button
                     key={prompt}
-                    className="h-auto rounded-full border-white/10 bg-white/5 px-4 py-2 text-left text-xs leading-5 text-slate-200 hover:bg-white/10"
+                    className="h-auto max-w-full whitespace-normal rounded-3xl border-white/10 bg-white/5 px-4 py-2 text-left text-xs leading-5 text-slate-200 hover:bg-white/10 sm:rounded-full"
                     disabled={isBusy}
                     onClick={() => handlePrompt(prompt)}
                     size="sm"
@@ -180,7 +180,7 @@ export function MediBotApp() {
               </div>
             </div>
 
-            <div className="relative flex-1 px-2 pb-2 sm:px-3 sm:pb-3">
+            <div className="relative min-w-0 flex-1 px-1.5 pb-1.5 sm:px-3 sm:pb-3">
               <Conversation className="h-full">
                 <ConversationContent className="px-3 py-5 sm:px-4">
                   {messages.length === 0 ? (
@@ -220,13 +220,13 @@ export function MediBotApp() {
                       <MessageContent
                         className={cn(
                           message.role === "assistant" &&
-                            "rounded-3xl border border-white/10 bg-white/5 px-4 py-3 shadow-lg shadow-black/10"
+                            "min-w-0 rounded-3xl border border-white/10 bg-white/5 px-4 py-3 shadow-lg shadow-black/10"
                         )}
                       >
                         {message.parts.map((part, index) =>
                           part.type === "text" ? (
                             <MessageResponse
-                              className="prose prose-invert max-w-none prose-p:leading-7 prose-strong:text-white prose-headings:text-white"
+                              className="prose prose-invert max-w-none break-words prose-p:leading-7 prose-strong:text-white prose-headings:text-white"
                               key={`${message.id}-${index}`}
                             >
                               {part.text}
@@ -247,27 +247,27 @@ export function MediBotApp() {
               </Conversation>
             </div>
 
-            <div className="border-t border-white/10 p-4 sm:p-5">
+            <div className="border-t border-white/10 p-3 sm:p-5">
               <form className="space-y-3" onSubmit={handleSubmit}>
                 <label className="sr-only" htmlFor="medical-question">
                   Ask a medical question
                 </label>
                 <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-3 shadow-inner shadow-black/10">
                   <textarea
-                    className="min-h-28 w-full resize-none border-0 bg-transparent px-2 py-2 text-sm leading-7 text-white outline-none placeholder:text-slate-400"
+                    className="min-h-24 w-full resize-none border-0 bg-transparent px-2 py-2 text-sm leading-7 text-white outline-none placeholder:text-slate-400 sm:min-h-28"
                     disabled={isBusy}
                     id="medical-question"
                     onChange={(event) => setInput(event.target.value)}
                     placeholder="Example: A patient has fever, headache, and weakness for two days. What should they do?"
                     value={input}
                   />
-                  <div className="flex items-center justify-between gap-3 border-t border-white/10 px-2 pt-3">
+                  <div className="flex flex-col gap-3 border-t border-white/10 px-2 pt-3 sm:flex-row sm:items-center sm:justify-between">
                     <p className="max-w-md text-xs leading-5 text-slate-400">
                       Keep questions clear. Include age group, symptoms, and
                       how long the illness has lasted.
                     </p>
                     <Button
-                      className="rounded-full px-4"
+                      className="w-full rounded-full px-4 sm:w-auto"
                       disabled={!input.trim() || isBusy}
                       size="lg"
                       type="submit"
